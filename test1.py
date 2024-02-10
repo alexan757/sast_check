@@ -1,9 +1,14 @@
-from django.db import connection
-import commands
-template_vars['output'] = commands.getstatusoutput('/usr/bin/process_soemthing')
-def find_user(username):
-    TWITTER_OAUTH_TOKEN = "dkedjekdjekldjekldje"
-    with connection.cursor() as cur:
-        cur.execute(f"""select username from USERS where name = '%s'""" % username)
-        output = cur.fetchone()
-    return output
+import requests
+
+api_key = "YOUR_API_KEY"
+
+def get_data():
+    url = "https://api.example.com/data"
+    headers = {
+        "Authorization": f"Bearer {api_key}"
+    }
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+data = get_data()
+print(data)
